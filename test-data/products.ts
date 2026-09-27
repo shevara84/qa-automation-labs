@@ -36,3 +36,31 @@ export const invalidProductSearchData: InvalidProductSearchData = {
   category: 'Shop Women Fashion',
   product: 'Jacket',
 };
+
+export interface ProductFilterData {
+  category: string;
+  url: string;
+  size: string;
+  expectedSize: string;
+}
+
+export const productFilterData: ProductFilterData[] = [
+  {
+    category: 'Women Fashion',
+    url: '/womens-wear.php',
+    size: 's',
+    expectedSize: 'S',
+  },
+  {
+    category: 'Men Fashion',
+    url: '/mens-wear.php',
+    size: 's',
+    expectedSize: 'S',
+  },
+  {
+    category: 'Kids Fashion',
+    url: '/kids-wear.php',
+    size: 's',
+    expectedSize: 'S',
+  },
+];
