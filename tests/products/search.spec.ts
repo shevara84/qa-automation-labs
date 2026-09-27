@@ -25,4 +25,13 @@ test.describe('Product search tests', () => {
       await productsPage.goBackToProducts();
     });
   }
+  test('Search non-existing product', async ({ productsPage }) => {
+    await productsPage.navigateTo('/shop.php');
+    // Select the product category 
+    await productsPage.selectCategory(invalidProductSearchData.category);
+    // Search for the non-existing product within the selected category
+    await productsPage.searchProduct(invalidProductSearchData.product);
+    // Verify that no products are found in the search results
+    await productsPage.verifyNoProductsFound();
+  });
 });
