@@ -2,7 +2,7 @@ import { Page, Locator, expect } from '@playwright/test';
 import { BasePage } from './base.page';
 
 
-export class ProductPage extends BasePage {
+export class ProductsPage extends BasePage {
     readonly searchInput: Locator;
     readonly productName: Locator;
     readonly productPrice: Locator;
