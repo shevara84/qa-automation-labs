@@ -42,5 +42,21 @@ export class ProductsPage extends BasePage {
     async openProduct(productName: string) {
         await this.page.getByRole('link', { name: productName }).first().click();
     }
+    // Verify the product details on the product page
+    async verifyProductDetails(productName: string, price: string) {
+        await expect(
+            this.page.getByRole('heading', {
+                name: productName,
+                level: 3,
+            }),
+        ).toBeVisible();
+
+        await expect(
+            this.page.getByRole('heading', {
+                name: price,
+                level: 3,
+            }),
+        ).toBeVisible();
+    }
 
 }
