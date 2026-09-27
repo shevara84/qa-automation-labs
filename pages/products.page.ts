@@ -33,7 +33,6 @@ export class ProductsPage extends BasePage {
             this.page.getByText('No products found', { exact: true }),
         ).toBeVisible();
     }
-
     // Navigate back to the main products page
     async goBackToProducts() {
         await this.page.getByRole('link', { name: 'Go To Back' }).click();
@@ -56,6 +55,32 @@ export class ProductsPage extends BasePage {
                 name: price,
                 level: 3,
             }),
+        ).toBeVisible();
+    }
+    // Select a size filter on the product page
+    async selectSize(value: string) {
+        await this.page.getByTestId(`filter-size-${value}`).check({ force: true });
+    }
+    // Clear a size filter on the product page
+    async clearSize(value: string) {
+        await this.page.getByTestId(`filter-size-${value}`).uncheck({ force: true });
+    }
+    // Verify that a size filter is checked on the product page
+    async verifySizeFilterChecked(value: string) {
+        await expect(
+            this.page.getByTestId(`filter-size-${value}`),
+        ).toBeChecked();
+    }
+    // Verify that a size filter is unchecked on the product page
+    async verifySizeFilterUnchecked(value: string) {
+        await expect(
+            this.page.getByTestId(`filter-size-${value}`),
+        ).not.toBeChecked();
+    }
+    // Verify that products displayed match the selected size filter
+    async verifyProductsBySize(value: string) {
+        await expect(
+            this.page.getByText(`Size: ${value.toUpperCase()}`, { exact: false }).first(),
         ).toBeVisible();
     }
 
